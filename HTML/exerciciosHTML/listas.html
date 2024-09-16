@@ -1,0 +1,101 @@
+<h1>Listas</h1>
+
+<!-- Lista Ordenada-->
+ <h2>Aprovados</h2>
+ <ol>
+    <li>Bia</li>
+    <li>Pedro</li>
+    <li>Ana</li>
+    <li>João</li>
+    <li>Gabriela</li>
+ </ol>
+
+ <!--Lista não ordenada-->
+ <h2>Lista de Compras</h2>
+ <ul>
+    <li>Queijo</li>
+    <li>Leite</li>
+    <li>Arroz</li>
+    <li>Pão</li>
+ </ul>
+
+ <!--Lista de Definição-->
+<h2>Principais termos do glossário de Cloud Computing</h2>
+<dl>
+    <dt>BaaS</dt> <!--Termo-->
+    <dd>Backend como Serviço</dd> <!--Definição-->
+    <dt>IaaS</dt>
+    <dd>Infraestrutura como Serviço</dd>
+    <dt>PaaS</dt>
+    <dd>Plataforma como Serviço</dd>
+    <dt>SaaS</dt>
+    <dd>Software como Serviço</dd>
+</dl>
+
+<!--Lista Aninhada-->
+<h2>Projeto</h2>
+<ul class="tree">
+    <li>
+        Backend
+        <ul class="nested">
+            <li>
+                app
+                <ul class="nested">
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                config
+                <ul class="nested">
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        Frontend
+        <ul class="nested">
+            <li>
+                public
+                <ul class="nested">
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<!--Ele linka com um css padrão do curso-->
+<style>
+    .neste {
+        display:none;
+    }
+    .active {
+        display: block;
+    }
+    .tree li{
+        cursor:pointer;
+    }
+</style>
+<script>
+    document.querySelectorAll('.tree li').forEach(item => {
+        item.addEventListener('click', function(e) {
+             // Prevenir o comportamento de propagar o clique para os sub-itens
+            e.stopPropagation();
+
+            const nested = this.querySelector('ul');
+
+            if (nested) {
+                nested.classList.toggle('active');
+            }
+        });
+    });
+</script>
+<!--Aqui dá uma confusão no JS, pois, no index.html, a gente fez o script em forma de AJAX, e usamos o innerHTML para isso. Então para que não haja confusão, para abrir essa mensagem de JS, devemos entrar diretamente nessa página e não pela index.html-->
