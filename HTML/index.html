@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de testes</title>
+</head>
+<body>
+    <header>
+        <h1>Exercicios HTML</h1>
+    </header>
+    <nav>
+        <a href="exerciciosHTML/testes.html">00 - Teste </a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+        Curso de Web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function (e) {
+                e.preventDefault()
+               
+                fetch(link.href)
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+            }
+// O que eu fiz aqui foi, associar cada link em uma função;
+//Na qual será disparada no onclick (quando clicar);
+//Então ele irá previnir o comportamento padrão;
+//Então vou ter acesso ao elemento a partir da constante conteudo -> getElementById (no caso aqui ele pega o elemento pelo id);
+//Faço uma chamada ajax pelo fetch em cima do atributo href (na qual me da o link da pagina);
+//Uma vez que a chamada está resolvida, ele chama a .then (resp => resp.text (resp = resposta));
+//Após isso, ele tem a disposição o .then(html) na qual eu coloco o conteudo.innerHTML e então recebo o html. E irá substituir o conteudo da section.
+        })
+    </script>
+</body>
+</html>
